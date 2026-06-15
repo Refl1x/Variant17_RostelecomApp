@@ -1,0 +1,44 @@
+<Window x:Class="RostelecomAppeals.Desktop.CommentsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Комментарии" Height="520" Width="720" WindowStartupLocation="CenterOwner" Background="{StaticResource RtBg}">
+    <Grid Margin="18">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <Border Background="White" CornerRadius="18" Padding="16" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock x:Name="TitleText" FontSize="22" FontWeight="Bold" Foreground="{StaticResource RtPurple}"/>
+                <TextBlock x:Name="SubText" Foreground="#6F6684"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Background="White" CornerRadius="18" Padding="12">
+            <ListBox x:Name="CommentsList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" Margin="4" CornerRadius="12" Background="#F5F3FB">
+                            <StackPanel>
+                                <TextBlock Text="{Binding CommentText}" TextWrapping="Wrap"/>
+                                <TextBlock Foreground="#6F6684" FontSize="12">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} • {1:dd.MM.yyyy HH:mm} • {2}">
+                                            <Binding Path="AuthorName"/>
+                                            <Binding Path="CreatedAt"/>
+                                            <Binding Path="VisibilityName"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        <Border Grid.Row="2" Background="White" CornerRadius="18" Padding="12" Margin="0,12,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="180"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <TextBox x:Name="CommentBox" Height="58" TextWrapping="Wrap" AcceptsReturn="True"/>
+                <ComboBox x:Name="VisibilityBox" Grid.Column="1" DisplayMemberPath="Name" VerticalAlignment="Center"/>
+                <Button Grid.Column="2" Content="Добавить" Click="Add_Click" VerticalAlignment="Center" Background="#FF4F12"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

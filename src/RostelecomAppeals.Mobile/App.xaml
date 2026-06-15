@@ -1,0 +1,52 @@
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RostelecomAppeals.Mobile.App">
+    <Application.Resources>
+        <Color x:Key="RtPurple">#7700FF</Color>
+        <Color x:Key="RtPurpleDark">#5312C8</Color>
+        <Color x:Key="RtOrange">#FF4F12</Color>
+        <Color x:Key="RtBlue">#00AEEF</Color>
+        <Color x:Key="RtBg">#F5F3FB</Color>
+        <Color x:Key="RtCard">#FFFFFF</Color>
+        <Color x:Key="RtText">#17141F</Color>
+        <Color x:Key="RtTextSoft">#6F6684</Color>
+        <Color x:Key="RtStroke">#E7E0F2</Color>
+        <Color x:Key="RtFieldBg">#FBFAFE</Color>
+
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource RtBg}" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource RtText}" />
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="{StaticResource RtText}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource RtTextSoft}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource RtFieldBg}" />
+            <Setter Property="HeightRequest" Value="52" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="TextColor" Value="{StaticResource RtText}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource RtTextSoft}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource RtFieldBg}" />
+            <Setter Property="AutoSize" Value="TextChanges" />
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="TextColor" Value="{StaticResource RtText}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource RtFieldBg}" />
+            <Setter Property="TitleColor" Value="{StaticResource RtTextSoft}" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
+
+        <Style TargetType="SearchBar">
+            <Setter Property="TextColor" Value="{StaticResource RtText}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource RtTextSoft}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource RtFieldBg}" />
+        </Style>
+    </Application.Resources>
+</Application>

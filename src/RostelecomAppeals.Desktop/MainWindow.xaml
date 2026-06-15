@@ -1,0 +1,124 @@
+<Window x:Class="RostelecomAppeals.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ростелеком — обращения граждан и клиентов" Height="760" Width="1220"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource RtBg}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" CornerRadius="0,24,24,0" Padding="22">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#7700FF" Offset="0"/>
+                    <GradientStop Color="#3D087B" Offset="0.58"/>
+                    <GradientStop Color="#00AEEF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top">
+                    <TextBlock Text="Ростелеком" Foreground="White" FontSize="30" FontWeight="Bold"/>
+                    <TextBlock Text="Учёт обращений" Foreground="#E9DDFF" FontSize="16" Margin="0,4,0,24"/>
+                    <Border Background="#33FFFFFF" CornerRadius="16" Padding="14" Margin="0,0,0,18">
+                        <StackPanel>
+                            <TextBlock Text="Статус" Foreground="#E9DDFF"/>
+                            <TextBlock x:Name="SyncStatusText" Text="Не авторизован" Foreground="White" FontWeight="Bold" FontSize="15"/>
+                        </StackPanel>
+                    </Border>
+                    <Button Content="Обновить" Click="Refresh_Click"/>
+                    <Button Content="Добавить обращение" Click="Add_Click" Background="#FF4F12"/>
+                    <Button Content="Редактировать" Click="Edit_Click"/>
+                    <Button Content="Комментарии" Click="Comments_Click"/>
+                    <Button Content="Удалить" Click="Delete_Click" Background="#E03131"/>
+                    <Button Content="Экспорт Excel" Click="ExportXlsx_Click" Background="#00AEEF"/>
+                    <Button Content="Экспорт Word" Click="ExportDocx_Click" Background="#00AEEF"/>
+                    <Button x:Name="AdminButton" Content="Панель администратора" Click="Admin_Click" Visibility="Collapsed"/>
+                    <Button Content="Сменить тему" Click="Theme_Click"/>
+                </StackPanel>
+                <TextBlock DockPanel.Dock="Bottom" Text="LWW • Supabase • WPF" Foreground="#E9DDFF" FontSize="12"/>
+            </DockPanel>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="22">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="140"/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="LoginPanel" Grid.Row="0" Background="{StaticResource RtCard}" CornerRadius="22" Padding="18" Margin="0,0,0,14">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="210"/>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Вход в систему" FontSize="22" FontWeight="Bold" Foreground="{StaticResource RtText}"/>
+                        <TextBlock Text="Войдите через аккаунт Supabase Auth. Роль подтянется из таблицы profiles." Foreground="#6F6684"/>
+                    </StackPanel>
+                    <TextBox x:Name="EmailBox" Grid.Column="1" VerticalAlignment="Center" Text="operator@demo.local"/>
+                    <PasswordBox x:Name="PasswordBox" Grid.Column="2" VerticalAlignment="Center"/>
+                    <Button Grid.Column="3" Content="Войти" Click="Login_Click" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1" Background="{StaticResource RtCard}" CornerRadius="22" Padding="14" Margin="0,0,0,14">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="SearchBox" TextChanged="Filter_Changed" VerticalAlignment="Center" ToolTip="Поиск по ФИО, адресу, описанию"/>
+                    <ComboBox x:Name="TypeFilter" Grid.Column="1" SelectionChanged="Filter_Changed" DisplayMemberPath="Name"/>
+                    <ComboBox x:Name="StatusFilter" Grid.Column="2" SelectionChanged="Filter_Changed" DisplayMemberPath="Name"/>
+                    <ComboBox x:Name="PriorityFilter" Grid.Column="3" SelectionChanged="Filter_Changed" DisplayMemberPath="Name"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Background="{StaticResource RtCard}" CornerRadius="22" Padding="8">
+                <DataGrid x:Name="AppealsGrid" SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер" Binding="{Binding PublicNumber}" Width="120"/>
+                        <DataGridTextColumn Header="Заявитель" Binding="{Binding ApplicantName}" Width="180"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding ContactPhone}" Width="125"/>
+                        <DataGridTextColumn Header="Адрес" Binding="{Binding ConnectionAddress}" Width="230"/>
+                        <DataGridTextColumn Header="Тип" Binding="{Binding TypeName}" Width="130"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding StatusName}" Width="160"/>
+                        <DataGridTextColumn Header="Приоритет" Binding="{Binding PriorityName}" Width="100"/>
+                        <DataGridTextColumn Header="Дата" Binding="{Binding RegisteredAt, StringFormat=dd.MM.yyyy HH:mm}" Width="140"/>
+                        <DataGridTextColumn Header="Специалист" Binding="{Binding SpecialistName}" Width="170"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+            <Border Grid.Row="3" Background="{StaticResource RtCard}" CornerRadius="22" Padding="18" Margin="0,14,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Аналитика по обращениям" FontSize="18" FontWeight="Bold"/>
+                        <TextBlock x:Name="StatsTotal" Text="Всего: 0" FontSize="24" FontWeight="Bold" Foreground="{StaticResource RtPurple}" Margin="0,10,0,0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="По статусам" FontWeight="Bold"/>
+                        <ItemsControl x:Name="StatusStats"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="По приоритетам" FontWeight="Bold"/>
+                        <ItemsControl x:Name="PriorityStats"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

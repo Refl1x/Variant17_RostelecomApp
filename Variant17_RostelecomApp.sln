@@ -1,0 +1,34 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11716.220 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RostelecomAppeals.Shared", "src\RostelecomAppeals.Shared\RostelecomAppeals.Shared.csproj", "{A73F4DB1-4A59-4A68-A4E2-18E8F6615111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RostelecomAppeals.Desktop", "src\RostelecomAppeals.Desktop\RostelecomAppeals.Desktop.csproj", "{16A489D7-D326-4B3D-82E6-A421F55A0E9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RostelecomAppeals.Mobile", "src\RostelecomAppeals.Mobile\RostelecomAppeals.Mobile.csproj", "{9E513A21-8EB3-42D8-9F3B-10C9CFEC0B9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A73F4DB1-4A59-4A68-A4E2-18E8F6615111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73F4DB1-4A59-4A68-A4E2-18E8F6615111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73F4DB1-4A59-4A68-A4E2-18E8F6615111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73F4DB1-4A59-4A68-A4E2-18E8F6615111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16A489D7-D326-4B3D-82E6-A421F55A0E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16A489D7-D326-4B3D-82E6-A421F55A0E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16A489D7-D326-4B3D-82E6-A421F55A0E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16A489D7-D326-4B3D-82E6-A421F55A0E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E513A21-8EB3-42D8-9F3B-10C9CFEC0B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E513A21-8EB3-42D8-9F3B-10C9CFEC0B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E513A21-8EB3-42D8-9F3B-10C9CFEC0B9C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9E513A21-8EB3-42D8-9F3B-10C9CFEC0B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E513A21-8EB3-42D8-9F3B-10C9CFEC0B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
